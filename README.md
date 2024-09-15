@@ -1,1 +1,1 @@
-# effective-journey
+# Note Taker Starter Code
