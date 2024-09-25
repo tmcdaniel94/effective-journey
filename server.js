@@ -27,7 +27,6 @@ app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
 
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
 
 
 app.post('/api/notes', (req, res) => {
@@ -39,42 +38,47 @@ app.post('/api/notes', (req, res) => {
       return res.status(500).json({ error: 'Failed to read database' });
     }
 
-  // Parse the existing data and add the new note
-  const notes = JSON.parse(data);
-  const newNote = req.body;
-  notes.push(newNote);
-
-  //Write the updated data back to db.json
-  fs.writeFile(dbPath, JSON.stringify(notes, null, 2), (err) => {
-
+    // Parse the existing data and add the new note
+    const notes = JSON.parse(data);
+    const { title, text } = req.body;
+    let newNote;
     if (title && text) {
       // Variable for the object we will save
-      const newPost = {
+      newNote = {
         title,
         text,
         id: uniqid(),
       };
-  
+
+      notes.push(newNote);
+    };
+
+    //Write the updated data back to db.json
+    fs.writeFile(dbPath, JSON.stringify(notes, null, 2), (err) => {
+      if (err) {
+        console.error('Error writing to db.json', err);
+        return res.status(500).json({ error: 'Failed to write to database' });
+      }
       const response = {
         status: 'success',
-        body: newPost,
+        body: newNote,
       };
 
       console.log(response);
-      return res.status(201).json({ message: 'Note added successfully', note: newNote});
+      return res.status(201).json({ message: 'Note added successfully', note: newNote });
 
-    } else if (err) {
-      console.error('Error writing to db.json', err);
-      return res.status(500).json({ error: 'Failed to write to database' });
-    }}
-  );
+    }
+    );
   });
 
-    // Let the client know that their POST request was received
-    res.json(`${req.method} request received`);
+  // Let the client know that their POST request was received
+  // res.json(`${req.method} request received`);
 
 });
 
+app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
+
+
 app.listen(PORT, () =>
-    console.log(`Example app listening at http://localhost:${PORT}`)
-  );
+  console.log(`Example app listening at http://localhost:${PORT}`)
+);
