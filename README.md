@@ -9,8 +9,9 @@ Clone code and run "npm install" in the terminal. Then enter "npm run start" to 
 ## License
 MIT
 
-## Web Link
-
+## Links
+Web Link: https://tmcdaniel94.github.io/effective-journey/
+Repository: https://github.com/tmcdaniel94/effective-journey
 
 ## Screenshots
 ![Landing Page](./public/assets/images/notetaker1.png)
