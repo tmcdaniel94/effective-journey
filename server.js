@@ -11,24 +11,18 @@ const PORT = 3001;
 app.use(express.json());
 app.use(express.static('public'));
 
-
-// app.get('/', (req, res) => res.sendFile('Navigate to /send or /routes'));
-
-
-
-
+// Retrieves previously created data
 app.get('/api/notes', (req, res) => {
   res.sendFile(path.join(__dirname, './db/db.json'));
-  // res.json(notesData);
-  // return notesData;
 });
 
+// Retrieves notes.html file
 app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
 
 
-
+// Pushes new note to existing data and returns newly written file
 app.post('/api/notes', (req, res) => {
   // Read the existing data from db.json
   const dbPath = path.join(__dirname, 'db', 'db.json');
@@ -53,7 +47,7 @@ app.post('/api/notes', (req, res) => {
       notes.push(newNote);
     };
 
-    //Write the updated data back to db.json
+    // Write the updated data back to db.json
     fs.writeFile(dbPath, JSON.stringify(notes, null, 2), (err) => {
       if (err) {
         console.error('Error writing to db.json', err);
@@ -70,9 +64,6 @@ app.post('/api/notes', (req, res) => {
     }
     );
   });
-
-  // Let the client know that their POST request was received
-  // res.json(`${req.method} request received`);
 
 });
 

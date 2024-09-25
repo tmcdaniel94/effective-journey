@@ -1,33 +1,17 @@
 [
   {
-    "title": "Test Title",
-    "text": "Test text"
+    "title": "Amazing Title",
+    "text": "These are my thoughts that I am saving for later.",
+    "id": "9rvmjczm1hbc2av"
   },
   {
-    "title": "My Title",
-    "text": "wowowowwowoow"
+    "title": "This Is My Note",
+    "text": "This is my text.",
+    "id": "9rvmizrm1hb0n62"
   },
   {
-    "title": "My Second Title",
-    "text": "woooooooooooowowowwowoow"
-  },
-  {
-    "title": "note",
-    "text": "new note"
-  },
-  {
-    "title": "hello",
-    "text": "hi",
-    "id": "9rvmidhm1hab53t"
-  },
-  {
-    "title": "hi",
-    "text": "a;slkdfjas",
-    "id": "9rvmiffm1hacg0p"
-  },
-  {
-    "title": ";alsdkf",
-    "text": "a;skdf",
-    "id": "9rvmij3m1hah8xj"
+    "title": "To-Do List",
+    "text": "1. Wash Car\n2. Buy Groceries\n3. Go to Bank",
+    "id": "9rvmjgzm1hben2l"
   }
 ]
